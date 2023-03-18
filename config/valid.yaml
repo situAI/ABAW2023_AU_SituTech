@@ -1,0 +1,40 @@
+model:
+  name: BERT
+  args:
+    affine_dim: 1024
+    feedforward_dim: 1024
+    nheads: 4
+    nlayers: 4
+    dropout: 0.3
+    use_pe: true
+    seq_len: 128
+    head_dropout: 0.1
+    head_dims:
+    - 512
+    - 256
+    out_dim: 12
+
+
+feats:
+  ires100_7_expr: 512
+  ires100_8_expr: 512
+  fau: 512
+  ms_va: 512
+  mae_emotionet: 768
+  mae_celeb: 768
+  mae: 768
+  affectnet: 342
+  vit_fau_crop_align: 768
+  hubert: 512
+  wav2vec_emotion: 1024
+  wav2vec: 1024
+  ecapatdnn: 512
+  fbank: 80
+  
+
+metric:
+  name: AUMetric
+
+
+out_csv: /home/dyy/project/ABAW5/au_abaw5/runs/trainval_valid.csv
+

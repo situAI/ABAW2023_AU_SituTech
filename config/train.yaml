@@ -1,0 +1,41 @@
+model:
+  name: BERT
+  args:
+    affine_dim: 1024
+    feedforward_dim: 1024
+    nheads: 4
+    nlayers: 4
+    dropout: 0.3
+    use_pe: true
+    seq_len: 128
+    head_dropout: 0.1
+    head_dims:
+    - 512
+    - 256
+    out_dim: 12
+
+feat:
+  wav2vec: 1024
+  fbank: 80
+  hubert: 512
+  ecapatdnn: 512
+  
+optimizer:
+  name: Adam
+  args:
+    lr: 0.0001
+    weight_decay: 1.0e-05
+
+lr_scheduler:
+  name: StepLR
+  args:
+    step_size: 20
+    gamma: 0.1
+
+loss:
+  name: 'BCELoss'
+  args:
+    pos_weight: [5.313365117945842, 12.621110288675055, 4.055175300491346, 2.349927370652231, 1.5794772227481655, 1.8215763024750444, 2.5577242699339386, 22.333420652800335, 19.92325668349224, 24.529750258948095, 1.0, 8.43763979335326]
+
+metric:
+  name: AUMetric
